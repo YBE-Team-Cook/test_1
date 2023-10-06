@@ -1,1 +1,6 @@
-
+spring:
+  profiles:
+    include:
+      common, thymeleaf
+    active:
+      - dev
