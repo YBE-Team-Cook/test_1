@@ -3,7 +3,7 @@ name: GitHub Tag
   on:
     push:
       branches:
-        - main # main branch로 push될 때 아래 action이 실행됩니다.
+        - master # main branch로 push될 때 아래 action이 실행됩니다.
 
   jobs:
     build:
