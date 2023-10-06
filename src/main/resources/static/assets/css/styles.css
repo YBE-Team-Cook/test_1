@@ -1,0 +1,12 @@
+main {
+  padding-top: 70px;
+}
+
+#main-no-padding {
+  padding-top: 0px;
+}
+
+#board-fixed-menu {
+  min-width: auto;
+}
+
