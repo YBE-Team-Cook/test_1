@@ -15,10 +15,10 @@ services:
         condition: service_healthy
     environment:
       TEST_DB_HOST: 'containers-us-west-47.railway.app'
-      TEST_DB_DATABASE: 'railway'
-      TEST_DB_PORT: '6830'
-      TEST_DB_USERNAME: 'root'
-      TEST_DB_PASSWORD: 'IKtmJ7qw7lpIruzDSwO4'
+      MYSQLDATABASE: 'railway'
+      MYSQLPORT: '6830'
+      MYSQLUSER: 'root'
+      MYSQLPASSWORD: 'IKtmJ7qw7lpIruzDSwO4'
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
