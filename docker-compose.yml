@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        TEST_WEB_PROFILE: prod
+        APP_PROFILE: prod
     restart: always
     ports:
       - "8080:8080"
@@ -14,7 +14,8 @@ services:
       test-db:
         condition: service_healthy
     environment:
-      TEST_DB_HOST: 'containers-us-west-47.railway.app'
+      APP_PROFILE: 'prod'
+      MYSQLHOST: 'containers-us-west-47.railway.app'
       MYSQLDATABASE: 'railway'
       MYSQLPORT: '6830'
       MYSQLUSER: 'root'

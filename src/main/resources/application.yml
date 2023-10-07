@@ -2,4 +2,4 @@ spring:
   profiles:
     include:
       common, thymeleaf
-    active: ${TEST_WEB_PROFILE}
+    active: ${APP_PROFILE}

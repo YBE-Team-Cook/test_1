@@ -4,9 +4,9 @@ spring:
       on-profile: prod
 
   datasource:
-    url: "jdbc:mysql://${TEST_DB_HOST}:${TEST_DB_PORT}/${TEST_DB_DATABASE}"
-    username: ${TEST_DB_USERNAME}
-    password: ${TEST_DB_PASSWORD}
+    url: "jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}"
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
