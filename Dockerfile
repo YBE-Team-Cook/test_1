@@ -1,8 +1,7 @@
-FROM openjdk:17-slim AS builder
-USER root
+FROM gradle:8.2.1-jdk17-alpine AS builder
 
-WORKDIR /app
-COPY . /app
+WORKDIR /build
+COPY . /build
 
 ARG EnvironmentVariable
 ARG RAILWAY_ENVIRONMENT
@@ -12,10 +11,9 @@ ENV RAILWAY_ENVIRONMENT=$RAILWAY_ENVIRONMENT
 RUN sed -i 's/\r$//' gradlew
 
 RUN if [ -f "./gradlew" ]; then chmod +x ./gradlew; fi
-RUN ./gradlew clean bootjar -x test --build-cache -i -s --no-daemon
+RUN ./gradlew clean bootjar -x
 
 FROM openjdk:17-slim
-MAINTAINER ybe.teamcook7@gmail.com
 
 ARG MYSQLHOST
 ARG MYSQLDATABASE
@@ -36,11 +34,10 @@ COPY --from=builder /**/build/libs/*.jar app.jar
 
 EXPOSE 8080
 
-USER nobody
+USER root
 
 # 환경 변수 설정
-ENV JAVA_TOOL_OPTIONS="-Dspring.profiles.active=prod \
-    -Djava.security.egd=file:/dev/./urandom"
+ENV JAVA_TOOL_OPTIONS="-Dspring.profiles.active=prod"
 
 # 애플리케이션 실행
 ENTRYPOINT ["java", "-jar", "app.jar"]
