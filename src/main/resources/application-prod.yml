@@ -4,17 +4,12 @@ spring:
       on-profile: prod
 
   datasource:
-    url: "jdbc:mysql://test-db:3306/test"
-    username: 'root'
-    password: 'root'
+    url: "jdbc:mysql://${TEST_DB_HOST}:${TEST_DB_PORT}/${TEST_DB_DATABASE}"
+    username: ${TEST_DB_USERNAME}
+    password: ${TEST_DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
 
     hibernate:
       ddl-auto: update
-
-server:
-  port: 8080
-  error:
-    include-message: always

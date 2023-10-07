@@ -149,9 +149,11 @@
             <section>
                 <div class="row g-0">
                     <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
-                        <div>
-                            <h1 class="text-uppercase fw-bold text-light mb-3">Biben dum<br>fringi dictum, augue purus</h1>
-                            <p class="text-light mb-4">Etiam a rutrum, mauris lectus aptent convallis. Fusce vulputate aliquam, sagittis odio metus. Nulla porttitor vivamus viverra laoreet, aliquam netus.</p>
+                        <div class="vstack">
+                            <div th:each="account:${accounts}">
+                                <h1 class="text-uppercase fw-bold text-light mb-3" th:text="${account.email}">Biben dum<br>fringi dictum, augue purus</h1>
+                                <p class="text-light mb-4" th:text="${account.name}">Etiam a rutrum, mauris lectus aptent convallis. Fusce vulputate aliquam, sagittis odio metus. Nulla porttitor vivamus viverra laoreet, aliquam netus.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,4 +189,16 @@
             </div>
             <div>
                 <hr>
-                <div class="dropdown show"><a class="dropdown-toggle link-body-emphasis d-flex align-items-center text-decoration-none" aria-expanded="true" data-bs-toggle="dropdown" role="button"><img class="rounded-circle me-2" alt="" width="40" height="40" src="https://i.pravatar.cc/200"><span><span class="fs-6 fw-semibold d-block mb-1" th:text="${#authentication.principal.account.nickname}">옥재욱<br></span></span></a><div class="dropdown-menu show shadow text-small" data-bs-popper="none" data-popper-placement="top-start"><a class="dropdown-item" href="#">프로필</a><div class="dropdown-divider"></div><a class="dropdown-item" href="#">로그아웃</a></div></div></div></div></div><script src="assets/bootstrap/js/bootstrap.min.js"></script><script src="assets/js/bs-init.js"></script></body></html>
+                <div class="dropdown"><a class="dropdown-toggle link-body-emphasis d-flex align-items-center text-decoration-none" aria-expanded="false" data-bs-toggle="dropdown" role="button"><img class="rounded-circle me-2" alt="" width="40" height="40" src="https://i.pravatar.cc/200"><span><span class="fs-6 fw-semibold d-block mb-1">옥재욱<br></span></span></a>
+                    <div class="dropdown-menu shadow text-small" data-popper-placement="top-start"><a class="dropdown-item" href="#">프로필</a>
+                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>

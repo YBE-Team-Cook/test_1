@@ -2,5 +2,4 @@ spring:
   profiles:
     include:
       common, thymeleaf
-    active:
-      - dev
+    active: ${TEST_WEB_PROFILE}

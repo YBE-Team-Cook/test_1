@@ -1,10 +1,10 @@
 spring:
   config:
     activate:
-      on-profile: dev
+      on-profile: local
 
   datasource:
-    url: "jdbc:mysql://test-db:3306/db"
+    url: "jdbc:mysql://localhost:3306/db"
     username: 'root'
     password: 'root'
     driver-class-name: com.mysql.cj.jdbc.Driver

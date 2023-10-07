@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        TEST_WEB_PROFILE: prod
     restart: always
     ports:
       - "8080:8080"
@@ -12,14 +14,11 @@ services:
       test-db:
         condition: service_healthy
     environment:
-      TZ: Asia/Seoul
-      TEST_DB_HOST: 'test-db.cxvqxk97tccw.ap-northeast-2.rds.amazonaws.com'
-      TEST_DB_DRIVER: 'com.mysql.cj.jdbc.Driver'
+      TEST_DB_HOST: 'containers-us-west-47.railway.app'
       TEST_DB_DATABASE: 'railway'
       TEST_DB_PORT: '6830'
       TEST_DB_USERNAME: 'root'
       TEST_DB_PASSWORD: 'IKtmJ7qw7lpIruzDSwO4'
-      TEST_WEB_PROFILE: prod
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
@@ -36,7 +35,7 @@ services:
     restart: always
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      timeout: 40s
+      timeout: 30s
       retries: 3
     networks:
       - network

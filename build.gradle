@@ -18,11 +18,37 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // QueryDSL. over Springboot 3.0
+    implementation 'com.querydsl:querydsl-jpa:+:jakarta'
+    annotationProcessor "com.querydsl:querydsl-apt:+:jakarta"
+    annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+    annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
+    //MapStuct(DTO->Entity 변환. type-safe bean)
+    implementation "org.mapstruct:mapstruct:+"
+    annotationProcessor "org.mapstruct:mapstruct-processor:+"
+
+    // Record builder
+    compileOnly 'io.soabase.record-builder:record-builder-core:+'
+    annotationProcessor 'io.soabase.record-builder:record-builder-processor:+'
+}
+
+// QueryDsl options
+def querydslDir = "$buildDir/generated/querydsl"
+
+sourceSets {
+    main.java.srcDirs += [querydslDir]
+}
+
+clean.doLast {
+    file(querydslDir).deleteDir()
 }
 
 tasks.named('test') {
