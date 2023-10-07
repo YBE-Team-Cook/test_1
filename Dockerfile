@@ -39,8 +39,7 @@ EXPOSE 8080
 USER nobody
 
 # 환경 변수 설정
-ENV JAVA_TOOL_OPTIONS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 \
-    -Dspring.profiles.active=prod \
+ENV JAVA_TOOL_OPTIONS="-Dspring.profiles.active=prod \
     -Djava.security.egd=file:/dev/./urandom"
 
 # 애플리케이션 실행
